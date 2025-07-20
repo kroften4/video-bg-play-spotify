@@ -5,6 +5,7 @@ const IS_YOUTUBE = window.location.hostname.search(/(?:^|.+\.)youtube\.com/) > -
 const IS_MOBILE_YOUTUBE = window.location.hostname == 'm.youtube.com';
 const IS_DESKTOP_YOUTUBE = IS_YOUTUBE && !IS_MOBILE_YOUTUBE;
 const IS_VIMEO = window.location.hostname.search(/(?:^|.+\.)vimeo\.com/) > -1;
+const IS_SPOTIFY = window.location.hostname.search(/(?:^|.+\.)spotify\.com/) > -1;
 
 const IS_ANDROID = window.navigator.userAgent.indexOf('Android') > -1;
 
@@ -18,13 +19,13 @@ window.addEventListener(
   'visibilitychange', evt => evt.stopImmediatePropagation(), true);
 
 // Fullscreen API
-if (IS_VIMEO) {
+if (IS_VIMEO || IS_SPOTIFY) {
   window.addEventListener(
     'fullscreenchange', evt => evt.stopImmediatePropagation(), true);
 }
 
 // User activity tracking
-if (IS_YOUTUBE) {
+if (IS_YOUTUBE || IS_SPOTIFY) {
   loop(pressKey, 60 * 1000, 10 * 1000); // every minute +/- 5 seconds
 }
 
