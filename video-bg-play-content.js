@@ -10,7 +10,7 @@ const IS_SPOTIFY = window.location.hostname.search(/(?:^|.+\.)spotify\.com/) > -
 const IS_ANDROID = window.navigator.userAgent.indexOf('Android') > -1;
 
 // Page Visibility API
-if (IS_ANDROID || !IS_DESKTOP_YOUTUBE) {
+if (IS_ANDROID || !IS_DESKTOP_YOUTUBE || IS_SPOTIFY) {
   Object.defineProperties(document.wrappedJSObject,
     { 'hidden': {value: false}, 'visibilityState': {value: 'visible'} });
 }
